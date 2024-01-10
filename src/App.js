@@ -24,7 +24,7 @@ function App() {
   }
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault();  
     if (valueInput !== '') {
       let note
       if (isEditing) {
@@ -36,7 +36,7 @@ function App() {
               time : moment().format("HH:mm:ss"),
               isEditing : noteEditingId
             }
-          : noteEdit
+           : noteEdit
         )        
       }else{
           note =  {
@@ -78,14 +78,14 @@ function App() {
     setWidth("25px")
     setHeight("25px")
   }
-
+  
   useEffect(() => {
     localStorage.setItem('listeNote', JSON.stringify(listeNote))
     localStorage.setItem('colorBackground', JSON.stringify(colorBackground))
   }, [listeNote, colorBackground])
 
   return (
-    <div className="container-fluid pt-3 pb-5" style={{backgroundImage: colorBackground}}>
+    <div className="container-fluid pt-3 pb-5 min-vh-100" style={{backgroundImage: colorBackground}}>
       <BackgroundColor height = {height} width={width} backgroundContainer={backgroundContainer} />
       <Form type='text' value={valueInput} onChange={handleChange} onSubmit={handleSubmit} placeholder='add' isEditing={isEditing} />
       <ContainerNotes listeNote={listeNote} handleEdit={handleEdit} handleDelete={handleDelete} handleDeleteAll={handleDeleteAll} numberNote={numberNote} />
